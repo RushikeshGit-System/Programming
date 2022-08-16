@@ -1,0 +1,50 @@
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+
+   public static int knapSackRec(int wt[],int val[],int capacity,int n,int dp[][]){
+       
+        if(n==0||capacity==0)
+            return 0;
+            
+        if(dp[n][capacity]!=-1)
+        {
+           return dp[n][capacity];
+        }
+        
+        if(wt[n-1]>capacity){
+          return dp[n][capacity]=knapSackRec(wt,val,capacity,n-1,dp);
+        
+       
+        }else{
+            return dp[n][capacity]=Math.max(val[n-1]+knapSackRec(wt,val,capacity-wt[n-1],n-1,dp),knapSackRec(wt,val,capacity,n-1,dp));
+        }
+        
+       
+    }
+    
+    static int knapSack( int wt[], int val[],int capacity, int N)
+{ 
+     
+    // Declare the table dynamically
+    int dp[][] = new int[N + 1][capacity + 1];
+     
+    // Loop to initially filled the
+    // table with -1
+    for(int i = 0; i < N + 1; i++)  
+        for(int j = 0; j < capacity + 1; j++)  
+            dp[i][j] = -1;   
+     
+    return knapSackRec( wt, val,capacity, N, dp);    
+}
+  public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        int[] wt = new int[]{10,20,30};
+        int[] val = new int[]{60,100,120};
+        int size=val.length;
+        int capacity=50;
+        System.out.println(knapSack(wt, val,capacity, size));  
+    }
+}

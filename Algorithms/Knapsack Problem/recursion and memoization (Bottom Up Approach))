@@ -1,8 +1,4 @@
-
-// Online Java Compiler
-// Use this editor to write, compile and run your Java code online
-
-class HelloWorld {
+class KnapsackProblem {
 
    public static int knapSackRec(int wt[],int val[],int capacity,int n,int dp[][]){
        

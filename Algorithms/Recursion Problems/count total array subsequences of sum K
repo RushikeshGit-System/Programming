@@ -1,0 +1,32 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    private static int count=0;
+    public static int printSubsequencesofsumK(int arr[],int i,int n,int sum,List<Integer> ls,int s){
+        if(n==i){
+            if(sum==s){
+                return 1;
+                
+            }
+            
+            return 0;
+        }
+            ls.add(arr[i]);
+            s+=arr[i];
+            int left = printSubsequencesofsumK(arr,i+1,n,sum,ls,s);
+            s-=arr[i];
+            ls.remove(ls.size()-1);
+            int right = printSubsequencesofsumK(arr,i+1,n,sum,ls,s);
+        
+        return right+left;
+    }
+    public static void main(String[] args) {
+        int[] arr = {1,2,1};
+        int n=3;
+        int sum=2;
+        List<Integer> ls = new ArrayList<Integer>();
+        System.out.println(printSubsequencesofsumK(arr,0,n,sum,ls,0));
+        
+        
+    }
+    
+}

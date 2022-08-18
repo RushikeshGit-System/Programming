@@ -1,0 +1,33 @@
+// "static void main" must be defined in a public class.
+import java.util.*;
+public class Main {
+    
+  public static void printSubsquences(int[] arr,List<Integer> ls,int n,int i){ 
+        if(i==n){
+            for(int j=0;j<ls.size();j++){
+                System.out.print(ls.get(j));
+             }
+             
+            if(ls.size()==0)
+            {
+            System.out.print("{}");
+            }
+            System.out.println();
+            
+        }
+        else{
+            printSubsquences(arr,ls,n,i+1);     
+            ls.add(arr[i]);    
+            printSubsquences(arr,ls,n,i+1);
+            ls.remove(ls.size()-1);  
+        }
+      
+      return;
+    }
+    public static void main(String[] args){
+        int[] arr={3,1,2};
+        List<Integer> ls = new ArrayList<Integer>();
+        int n=3;
+        printSubsquences(arr,ls,3,0);        
+    }
+}

@@ -1,0 +1,30 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    
+    public static void findCombinationsOfSum(int index,int target,int[] arr,List<List<Integer>> ans,List<Integer> ds){
+        if(index==arr.length){
+            if(target==0){
+               ans.add(new ArrayList<>(ds));
+             }
+            return;
+        }
+        
+        if(target>=arr[index]){
+            ds.add(arr[index]);
+            findCombinationsOfSum(index,target-arr[index],arr,ans,ds);
+            ds.remove(ds.size()-1);
+           }
+        
+        findCombinationsOfSum(index+1,target,arr,ans,ds);
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {2,3,6,7};
+        int n=3;
+        
+        List<List<Integer>> ans = new ArrayList<>();
+        findCombinationsOfSum(0,7,arr,ans,new ArrayList<>()); 
+        System.out.println(ans);
+    }
+    
+}

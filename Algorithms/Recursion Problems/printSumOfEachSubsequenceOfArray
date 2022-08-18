@@ -1,0 +1,23 @@
+public class Main {
+    
+    public static void printSumOfEachSubsequenceOfArray(int index,int n,int sum,int[] arr,List<Integer> subSum){
+        if(index==n){
+            subSum.add(sum);
+             return;
+        }
+        printSumOfEachSubsequenceOfArray(index+1,n,sum+arr[index],arr,subSum);
+        printSumOfEachSubsequenceOfArray(index+1,n,sum,arr,subSum);
+        
+        
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {3,1,2};
+       
+        int sum=0;
+        List<Integer> subSum = new ArrayList<>();
+       printSumOfEachSubsequenceOfArray(0,3,sum,arr,subSum); 
+        System.out.println(subSum);
+    }
+    
+}

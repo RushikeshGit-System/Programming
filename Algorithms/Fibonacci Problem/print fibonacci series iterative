@@ -1,0 +1,21 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class FibonacciwithDP {
+
+    public static void main(String[] args) {
+        int n=9;
+        
+        int prev1=1;
+        int prev2=0;
+        System.out.println(prev2);
+        System.out.println(prev1);
+        for(int i=2;i<n;i++){
+            int temp=prev1+prev2;
+            System.out.println(temp);
+            prev2=prev1;
+            prev1=temp;
+        }
+    
+    }
+}

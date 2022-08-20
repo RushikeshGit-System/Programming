@@ -1,0 +1,22 @@
+class FibonacciwithDP {
+    
+    public static void fun(int index,int[] arr,List<Integer> ls,List<List<Integer>> ansList){
+        ansList.add(new ArrayList<>(ls));
+        for(int i=index;i<arr.length;i++){
+            if(i!=index && arr[i]==arr[i-1])continue;
+            ls.add(arr[i]);
+            fun(i+1,arr,ls,ansList);
+            ls.remove(ls.size()-1);
+            
+        }
+    }
+    
+    public static void main(String[] args) {
+        
+        int[] arr = {1,2,2};
+        List<Integer> ls = new ArrayList<Integer>();
+        List<List<Integer>> ansList = new ArrayList<>();
+        fun(0,arr,ls,ansList);  
+        System.out.print(ansList);
+    }
+}

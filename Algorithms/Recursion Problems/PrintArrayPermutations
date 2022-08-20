@@ -1,0 +1,40 @@
+class PrintArrayPermutations {
+    
+    public static void fun(int[] arr,List<Integer> ls,List<List<Integer>> ansList,int[] temp){
+        if(ls.size()==arr.length){
+        ansList.add(new ArrayList<>(ls));
+            return;
+        }
+        for(int i=0;i<arr.length;i++){
+            
+        
+            if(temp[i]!=1){
+                ls.add(arr[i]);
+                temp[i]=1;
+                fun(arr,ls,ansList,temp);
+                ls.remove(ls.size()-1);
+                temp[i]=0;
+            }
+        }
+            
+        return;
+              
+        }
+    
+    
+    public static void main(String[] args) {
+        
+        int[] arr = {1,2,3};
+        List<Integer> ls = new ArrayList<Integer>();
+        List<List<Integer>> ansList = new ArrayList<>();
+        int[] temp = new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            temp[i]=0;
+        }
+        fun(arr,ls,ansList,temp);  
+        for(List<Integer> ls1:ansList){
+            System.out.println(ls1);
+        }
+        
+    }
+}
